@@ -4,6 +4,7 @@ import { Dimensions } from "react-native";
 import SearchPageTemplate from "../../components/SearchPageTemplate";
 
 const width = Dimensions.get('window').width;
+const height = Dimensions.get('window').height;
 
 const listNovoTestamento = [
     { id_livro: 1, nome: 'Romanos' },
@@ -66,8 +67,16 @@ const listVelhoTestamento = [
     { id_livro: 33, nome: 'Ageu' },
     { id_livro: 34, nome: 'Zacarias' },
 
-
 ]
+
+
+
+const Scroll = styled.ScrollView`
+    top: 40px;
+    position: relative;
+    max-height: ${height - 180}px;
+`
+
 
 const Container = styled.View`
     flex: 1;    
@@ -78,18 +87,24 @@ const Container = styled.View`
     padding: 10px;
 `
 
-const Buttom = styled.Text`
+const Buttom = styled.TouchableHighlight`
     width: 150px;
     height: 40px;
     margin-bottom: 10px;
-    text-align: center;
-
+    justify-content: center;
+    background-color: rgba(19, 36, 64, 0.95);
     border-width: 1px;
     border-color: white;
-    border-radius: 5px;
-    color: white;
-
+    border-radius: 8px;
 `
+
+const StyledText = styled.Text`    
+    color: #FBB03F;
+    font-size: 14px;
+    font-family: Roboto_400Regular;
+    text-align: center;
+    
+`;
 
 const LivrosScreen = (props) => {
 
@@ -97,10 +112,20 @@ const LivrosScreen = (props) => {
 
     return (
         <SearchPageTemplate >
-            <Container>
-                {data?.id === 2 && listNovoTestamento.map((item, index) => <Buttom key={index} > {item.nome} </Buttom>)}
-                {data?.id === 1 && listVelhoTestamento.map((item, index) => <Buttom key={index} > {item.nome} </Buttom>)}
-            </Container>
+            <Scroll showsVerticalScrollIndicator={false}>
+                <Container>
+                    {data?.id === 2 && listNovoTestamento.map((item, index) => <Buttom key={index} >
+                        <StyledText>
+                            {item.nome}
+                        </StyledText>
+                    </Buttom>)}
+                    {data?.id === 1 && listVelhoTestamento.map((item, index) => <Buttom key={index} >
+                        <StyledText>
+                            {item.nome}
+                        </StyledText>
+                    </Buttom>)}
+                </Container>
+            </Scroll>
         </SearchPageTemplate>
     )
 

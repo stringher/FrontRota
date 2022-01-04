@@ -30,7 +30,6 @@ const Scroll = styled.ScrollView`
     top: 40px;
     position: relative;
     max-height: ${height - 380}px;
-    /* max-height: ${height - 400}; */
 `
 
 const Container = styled.View`
