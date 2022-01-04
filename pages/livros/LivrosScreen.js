@@ -66,17 +66,13 @@ const listVelhoTestamento = [
     { id_livro: 32, nome: 'Habacuque' },
     { id_livro: 33, nome: 'Ageu' },
     { id_livro: 34, nome: 'Zacarias' },
-
 ]
-
-
 
 const Scroll = styled.ScrollView`
     top: 40px;
     position: relative;
     max-height: ${height - 180}px;
 `
-
 
 const Container = styled.View`
     flex: 1;    
@@ -114,16 +110,18 @@ const LivrosScreen = (props) => {
         <SearchPageTemplate >
             <Scroll showsVerticalScrollIndicator={false}>
                 <Container>
-                    {data?.id === 2 && listNovoTestamento.map((item, index) => <Buttom key={index} >
-                        <StyledText>
-                            {item.nome}
-                        </StyledText>
-                    </Buttom>)}
-                    {data?.id === 1 && listVelhoTestamento.map((item, index) => <Buttom key={index} >
-                        <StyledText>
-                            {item.nome}
-                        </StyledText>
-                    </Buttom>)}
+                    {data?.id === 1 ?
+                        listVelhoTestamento.map((item, index) => <Buttom key={index} >
+                            <StyledText>
+                                {item.nome}
+                            </StyledText>
+                        </Buttom>)
+                        :
+                        listNovoTestamento.map((item, index) => <Buttom key={index} >
+                            <StyledText>
+                                {item.nome}
+                            </StyledText>
+                        </Buttom>)}
                 </Container>
             </Scroll>
         </SearchPageTemplate>
