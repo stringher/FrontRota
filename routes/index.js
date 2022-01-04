@@ -11,7 +11,7 @@ import CapitulosScreen from '../pages/capitulos/CapitulosScreen'
 const AutenticatedRoutes = () => {
     const Stack = createNativeStackNavigator();
     return (
-        <Stack.Navigator initialRouteName="Livros" screenOptions={{ headerShown: false, animation: 'slide_from_right', }}>
+        <Stack.Navigator initialRouteName="Home" screenOptions={{ headerShown: false, animation: 'slide_from_right', }}>
             <Stack.Screen name="Login" component={HomeScreen} />
             <Stack.Screen name="PlayList" component={PlayListScreen} />
             <Stack.Screen name="Cadastro" component={CadastroScreen} />
@@ -25,7 +25,7 @@ const AutenticatedRoutes = () => {
 const UnAuthenticatedRoutes = () => {
     const Stack = createNativeStackNavigator();
     return (
-        <Stack.Navigator initialRouteName="Livros" screenOptions={{ headerShown: false, animation: 'slide_from_right', }} >
+        <Stack.Navigator initialRouteName="Home" screenOptions={{ headerShown: false, animation: 'slide_from_right', }} >
             <Stack.Screen name="Login" component={HomeScreen} />
             <Stack.Screen name="PlayList" component={PlayListScreen} />
             <Stack.Screen name="Cadastro" component={CadastroScreen} />

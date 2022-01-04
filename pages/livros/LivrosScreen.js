@@ -48,18 +48,18 @@ const Container = styled.View`
     flex: 1;    
     flex-direction: row;
     flex-wrap: wrap;
-    width: ${width - 50}px;
-    /* right: 10px; */
     justify-content: space-between;   
+    width: ${width - 50}px;
     padding: 10px;
 `
 
 const Buttom = styled.Text`
-    padding: 5px;
     width: 150px;
     height: 40px;
+    margin-bottom: 10px;
     text-align: center;
-    border-width: 1;
+
+    border-width: 1px;
     border-color: white;
     border-radius: 5px;
     color: white;
@@ -71,7 +71,7 @@ const LivrosScreen = (props) => {
     return (
         <SearchPageTemplate >
             <Container>
-                {list.map(item => <Buttom key={item.id} > {item.nome} </Buttom>)}
+                {list.map((item, index) => <Buttom key={index} > {item.nome} </Buttom>)}
             </Container>
         </SearchPageTemplate>
     )

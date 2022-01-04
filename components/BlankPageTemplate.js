@@ -1,7 +1,6 @@
 import React from "react";
 import styled from "styled-components/native";
 import AppLoading from 'expo-app-loading';
-import { Dimensions } from "react-native";
 import { useFonts, RobotoCondensed_300Light } from '@expo-google-fonts/roboto-condensed';
 import Footer from './footer/Footer'
 

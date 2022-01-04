@@ -39,15 +39,23 @@ const StyledText = styled.Text`
     text-align: center;
 `
 
+
+
 const MenuLivros = (props) => {
+
     const [fontsLoaded] = useFonts({ Roboto_400Regular, })
+
+    const handleOnPress = (data) => {
+        props.navigation.navigate('Livros', data)
+    }
+
     if (!fontsLoaded) {
         return <AppLoading />;
     } else {
         return (
             <Container>
                 {lista.map((item, index) =>
-                    <Button key={index} >
+                    <Button key={index} onPress={() => handleOnPress(item)} >
                         <StyledText >{item.nome}</StyledText>
                     </Button>
                 )}
