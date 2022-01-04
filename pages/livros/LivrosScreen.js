@@ -90,7 +90,7 @@ const Buttom = styled.TouchableHighlight`
     justify-content: center;
     background-color: rgba(19, 36, 64, 0.95);
     border-width: 1px;
-    border-color: white;
+    border-color: #BBBBBB;
     border-radius: 8px;
 `
 
