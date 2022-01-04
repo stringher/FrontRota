@@ -37,7 +37,11 @@ const Input = styled.TextInput`
 const SearchBar = (props) => {
     const [search, setSearch] = React.useState('');
     const [fontsLoaded] = useFonts({ Roboto_400Regular, })
-    const onSearch = () => { props.onChange(search) };
+
+    const onSearch = () => {
+        props.onSearch(search.trim());
+    };
+
     if (!fontsLoaded) {
         return <AppLoading />;
     } else {

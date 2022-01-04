@@ -8,7 +8,7 @@ const HomeScreen = (props) => {
   const [filter, setFilter] = React.useState('');
 
   return (
-    <SearchPageTemplate >
+    <SearchPageTemplate  {...props} onSearch={(data) => setFilter(data)}>
       <MenuLivros {...props} />
       <MenuTemas {...props} filter={filter} />
     </SearchPageTemplate>

@@ -23,7 +23,6 @@ const AreaContainer = styled.View`
 
 const SearchPageTemplate = (props) => {
 
-    const [search, setSearch] = React.useState('');
     const [fontsLoaded] = useFonts({ RobotoCondensed_300Light, });
 
     if (!fontsLoaded) {
@@ -31,7 +30,7 @@ const SearchPageTemplate = (props) => {
     } else {
         return (
             <Container>
-                <SearchBar {...props} onChange={(search) => setSearch(search)} />
+                <SearchBar {...props} onSearch={(data) => props.onSearch(data)} />
                 <AreaContainer>
                     {props.children}
                 </AreaContainer>

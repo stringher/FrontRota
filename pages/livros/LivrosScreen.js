@@ -7,28 +7,33 @@ const width = Dimensions.get('window').width;
 const height = Dimensions.get('window').height;
 
 const listNovoTestamento = [
-    { id_livro: 1, nome: 'Romanos' },
-    { id_livro: 2, nome: '1 Coríntios' },
-    { id_livro: 3, nome: '2 Coríntios' },
-    { id_livro: 4, nome: 'Gálatas' },
-    { id_livro: 5, nome: 'Efésios' },
-    { id_livro: 6, nome: 'Filipenses' },
-    { id_livro: 7, nome: 'Colossenses' },
-    { id_livro: 8, nome: '1 Tessalonicenses' },
-    { id_livro: 9, nome: '2 Tessalonicenses' },
-    { id_livro: 10, nome: '1 Timóteo' },
-    { id_livro: 11, nome: '2 Timóteo' },
-    { id_livro: 12, nome: 'Tito' },
-    { id_livro: 13, nome: 'Filemon' },
-    { id_livro: 14, nome: 'Hebreus' },
-    { id_livro: 15, nome: 'Tiago' },
-    { id_livro: 16, nome: '1 Pedro' },
-    { id_livro: 17, nome: '2 Pedro' },
-    { id_livro: 18, nome: '1 João' },
-    { id_livro: 19, nome: '2 João' },
-    { id_livro: 20, nome: '3 João' },
-    { id_livro: 21, nome: 'Judas' },
-    { id_livro: 22, nome: 'Apocalipse' },
+    { id_livro: 1, nome: 'Mateus' },
+    { id_livro: 2, nome: 'Marcos' },
+    { id_livro: 3, nome: 'Lucas' },
+    { id_livro: 4, nome: 'João' },
+    { id_livro: 5, nome: 'Atos dos Apóstolos' },
+    { id_livro: 6, nome: 'Romanos' },
+    { id_livro: 7, nome: '1 Coríntios' },
+    { id_livro: 8, nome: '2 Coríntios' },
+    { id_livro: 9, nome: 'Gálatas' },
+    { id_livro: 10, nome: 'Efésios' },
+    { id_livro: 11, nome: 'Filipenses' },
+    { id_livro: 12, nome: 'Colossenses' },
+    { id_livro: 13, nome: '1 Tessalonicenses' },
+    { id_livro: 14, nome: '2 Tessalonicenses' },
+    { id_livro: 15, nome: '1 Timóteo' },
+    { id_livro: 16, nome: '2 Timóteo' },
+    { id_livro: 17, nome: 'Tito' },
+    { id_livro: 18, nome: 'Filemon' },
+    { id_livro: 19, nome: 'Hebreus' },
+    { id_livro: 20, nome: 'Tiago' },
+    { id_livro: 21, nome: '1 Pedro' },
+    { id_livro: 22, nome: '2 Pedro' },
+    { id_livro: 23, nome: '1 João' },
+    { id_livro: 24, nome: '2 João' },
+    { id_livro: 25, nome: '3 João' },
+    { id_livro: 26, nome: 'Judas' },
+    { id_livro: 27, nome: 'Apocalipse' },
 ]
 
 const listVelhoTestamento = [
@@ -95,7 +100,7 @@ const Buttom = styled.TouchableHighlight`
 `
 
 const StyledText = styled.Text`    
-    color: white;
+    color: #F6F6F6;
     font-size: 14px;
     font-family: Roboto_400Regular;
     text-align: center;
