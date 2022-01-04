@@ -62,9 +62,15 @@ const MenuTemas = (props) => {
 
     const [fontsLoaded] = useFonts({ Roboto_400Regular, })
 
-    // const [list, setList] = React.useState([]);
-    const [list, setList] = React.useState(mock);
-    const [originalList, setOriginalList] = React.useState(mock);
+    const [list, setList] = React.useState([]);
+    const [originalList, setOriginalList] = React.useState([mock]);
+
+    // const [list, setList] = React.useState(mock);
+    // const [originalList, setOriginalList] = React.useState([mock]);
+
+    React.useEffect(() => {
+        getList()
+    }, [])
 
     React.useEffect(() => {
         if (props.filter && props.filter.trim() !== '') {
@@ -83,10 +89,6 @@ const MenuTemas = (props) => {
                 setOriginalList(() => [...response])
             })
     };
-
-    // React.useEffect(() => {
-    //     getList()
-    // }, [])
 
     const handleOnPress = (data) => {
         props.navigation.navigate('PlayList', data)

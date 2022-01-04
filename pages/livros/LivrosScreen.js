@@ -80,7 +80,7 @@ const Container = styled.View`
     flex-wrap: wrap;
     justify-content: space-between;   
     width: ${width - 50}px;
-    padding: 10px;
+    padding: 5px;
 `
 
 const Buttom = styled.TouchableHighlight`
@@ -95,7 +95,7 @@ const Buttom = styled.TouchableHighlight`
 `
 
 const StyledText = styled.Text`    
-    color: #FBB03F;
+    color: white;
     font-size: 14px;
     font-family: Roboto_400Regular;
     text-align: center;
