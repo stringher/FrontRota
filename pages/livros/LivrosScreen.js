@@ -111,8 +111,10 @@ const LivrosScreen = (props) => {
 
     const data = props?.route?.params;
 
+    const [filter, setFilter] = React.useState('');
+
     return (
-        <SearchPageTemplate >
+        <SearchPageTemplate  {...props} onSearch={(data) => setFilter(data)}>
             <Scroll showsVerticalScrollIndicator={false}>
                 <Container>
                     {data?.id === 1 ?

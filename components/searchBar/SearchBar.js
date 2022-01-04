@@ -38,21 +38,17 @@ const SearchBar = (props) => {
     const [search, setSearch] = React.useState('');
     const [fontsLoaded] = useFonts({ Roboto_400Regular, })
 
-    const onSearch = () => {
-        props.onSearch(search.trim());
-    };
-
     if (!fontsLoaded) {
         return <AppLoading />;
     } else {
         return (
             <Container>
-                <Button onPress={onSearch}>
+                <Button onPress={() => props?.onSearch(search.trim())}>
                     <AntDesign name="search1" size={26} color="white" />
                 </Button>
                 <Input
-                    onChangeText={(value) => { setSearch(value); }}
-                    onSubmitEditing={() => { onSearch(search); }}
+                    onChangeText={(value) => setSearch(value)}
+                    onSubmitEditing={() => props?.onSearch(search.trim())}
                     value={search}
                     keyboardType="ascii-capable"
                 />
