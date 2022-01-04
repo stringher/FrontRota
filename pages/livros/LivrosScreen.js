@@ -111,24 +111,26 @@ const LivrosScreen = (props) => {
 
     const data = props?.route?.params;
 
+    const [list, setList] = React.useState(data?.id === 1 ? listVelhoTestamento : listNovoTestamento);
     const [filter, setFilter] = React.useState('');
+
+    React.useEffect(() => {
+        const result = (data?.id === 1 ? listVelhoTestamento : listNovoTestamento).filter(item => item.nome.toLowerCase().indexOf(filter.toLowerCase()) !== -1)
+        setList(() => [...result])
+    }, [filter])
 
     return (
         <SearchPageTemplate  {...props} onSearch={(data) => setFilter(data)}>
             <Scroll showsVerticalScrollIndicator={false}>
                 <Container>
-                    {data?.id === 1 ?
-                        listVelhoTestamento.map((item, index) => <Buttom key={index} >
-                            <StyledText>
-                                {item.nome}
-                            </StyledText>
-                        </Buttom>)
-                        :
-                        listNovoTestamento.map((item, index) => <Buttom key={index} >
-                            <StyledText>
-                                {item.nome}
-                            </StyledText>
-                        </Buttom>)}
+                    {
+                        list?.map((item, index) =>
+                            <Buttom key={index} >
+                                <StyledText>
+                                    {item.nome}
+                                </StyledText>
+                            </Buttom>)
+                    }
                 </Container>
             </Scroll>
         </SearchPageTemplate>
