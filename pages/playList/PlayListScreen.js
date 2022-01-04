@@ -7,8 +7,6 @@ const PlayListScreen = (props) => {
 
   const data = props?.route?.params;
 
-  console.log(data);
-
   return (
     <TitlePageTemplate {...props} nome={data?.nome || "PlayList"} footerId={2} >
       <Text style={{ color: 'white' }}>Olá mundo</Text>

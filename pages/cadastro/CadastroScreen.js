@@ -6,7 +6,7 @@ import TitlePageTemplate from "../../components/TitlePageTemplate";
 const CadastroScreen = (props) => {
 
     return (
-        <TitlePageTemplate {...props} nome="PlayList" footerId={2} >
+        <TitlePageTemplate {...props} nome="" footerId={0} >
             <Text style={{ color: 'white' }}>Olá mundo</Text>
         </TitlePageTemplate>
     )
