@@ -3,8 +3,6 @@ import SearchPageTemplate from "../../components/SearchPageTemplate";
 import MenuLivros from './_components/MenuLivros'
 import MenuTemas from './_components/MenuTemas'
 
-
-
 const HomeScreen = (props) => {
 
   const [filter, setFilter] = React.useState('');

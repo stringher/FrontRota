@@ -5,7 +5,32 @@ import SearchPageTemplate from "../../components/SearchPageTemplate";
 
 const width = Dimensions.get('window').width;
 
-const list = [
+const listNovoTestamento = [
+    { id_livro: 1, nome: 'Romanos' },
+    { id_livro: 2, nome: '1 Coríntios' },
+    { id_livro: 3, nome: '2 Coríntios' },
+    { id_livro: 4, nome: 'Gálatas' },
+    { id_livro: 5, nome: 'Efésios' },
+    { id_livro: 6, nome: 'Filipenses' },
+    { id_livro: 7, nome: 'Colossenses' },
+    { id_livro: 8, nome: '1 Tessalonicenses' },
+    { id_livro: 9, nome: '2 Tessalonicenses' },
+    { id_livro: 10, nome: '1 Timóteo' },
+    { id_livro: 11, nome: '2 Timóteo' },
+    { id_livro: 12, nome: 'Tito' },
+    { id_livro: 13, nome: 'Filemon' },
+    { id_livro: 14, nome: 'Hebreus' },
+    { id_livro: 15, nome: 'Tiago' },
+    { id_livro: 16, nome: '1 Pedro' },
+    { id_livro: 17, nome: '2 Pedro' },
+    { id_livro: 18, nome: '1 João' },
+    { id_livro: 19, nome: '2 João' },
+    { id_livro: 20, nome: '3 João' },
+    { id_livro: 21, nome: 'Judas' },
+    { id_livro: 22, nome: 'Apocalipse' },
+]
+
+const listVelhoTestamento = [
     { id_livro: 1, nome: 'Genesis' },
     { id_livro: 2, nome: 'Êxodo' },
     { id_livro: 3, nome: 'Levítico' },
@@ -68,10 +93,13 @@ const Buttom = styled.Text`
 
 const LivrosScreen = (props) => {
 
+    const data = props?.route?.params;
+
     return (
         <SearchPageTemplate >
             <Container>
-                {list.map((item, index) => <Buttom key={index} > {item.nome} </Buttom>)}
+                {data?.id === 2 && listNovoTestamento.map((item, index) => <Buttom key={index} > {item.nome} </Buttom>)}
+                {data?.id === 1 && listVelhoTestamento.map((item, index) => <Buttom key={index} > {item.nome} </Buttom>)}
             </Container>
         </SearchPageTemplate>
     )
