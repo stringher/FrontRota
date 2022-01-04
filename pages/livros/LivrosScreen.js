@@ -115,7 +115,8 @@ const LivrosScreen = (props) => {
     const [filter, setFilter] = React.useState('');
 
     React.useEffect(() => {
-        const result = (data?.id === 1 ? listVelhoTestamento : listNovoTestamento).filter(item => item.nome.toLowerCase().indexOf(filter.toLowerCase()) !== -1)
+        const result = (data?.id === 1 ? listVelhoTestamento : listNovoTestamento)
+            .filter(item => item.nome.toLowerCase().indexOf(filter.toLowerCase()) !== -1)
         setList(() => [...result])
     }, [filter])
 
