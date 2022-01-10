@@ -7,11 +7,13 @@ import PlayListScreen from '../pages/playList/PlayListScreen';
 import CadastroScreen from '../pages/cadastro/CadastroScreen';
 import LivrosScreen from '../pages/livros/LivrosScreen';
 import CapitulosScreen from '../pages/capitulos/CapitulosScreen'
+import FirstPage from '../pages/first-page/firstPage';
 
 const AutenticatedRoutes = () => {
     const Stack = createNativeStackNavigator();
     return (
-        <Stack.Navigator initialRouteName="Cadastro" screenOptions={{ headerShown: false, animation: 'slide_from_right', }}>
+        <Stack.Navigator initialRouteName="FirstPage" screenOptions={{ headerShown: false, animation: 'slide_from_right', }}>
+            <Stack.Screen name="FirstPage" component={FirstPage} />
             <Stack.Screen name="Login" component={HomeScreen} />
             <Stack.Screen name="PlayList" component={PlayListScreen} />
             <Stack.Screen name="Cadastro" component={CadastroScreen} />
