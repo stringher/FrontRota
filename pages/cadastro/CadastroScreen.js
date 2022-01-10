@@ -7,7 +7,6 @@ import { useFonts, Roboto_400Regular, } from '@expo-google-fonts/roboto';
 
 import { InputTextBox, InputDateBox } from '../../components/InputBox'
 import TitlePageTemplate from "../../components/TitlePageTemplate";
-// import { format } from "date-fns";
 
 const width = Dimensions.get('window').width;
 

@@ -1,8 +1,7 @@
 import React from 'react'
 import { Audio } from 'expo-av';
 import styled from "styled-components/native";
-// import { ProgressBar } from '@react-native-community/progress-bar-android';
-import { Ionicons, MaterialIcons, Entypo, } from '@expo/vector-icons'
+import { MaterialIcons } from '@expo/vector-icons'
 import AppLoading from 'expo-app-loading';
 import { Dimensions } from "react-native";
 
@@ -25,7 +24,7 @@ const ButtonContainer = styled.View`
     justify-content: space-between;
     width: 150px;
     background-color: #132440;
-    border-width: 1;
+    border-width: 1px;
     border-color: white;
 `;
 
