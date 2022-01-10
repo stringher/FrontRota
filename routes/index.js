@@ -27,11 +27,11 @@ const UnAuthenticatedRoutes = () => {
     return (
         <Stack.Navigator initialRouteName="Home" screenOptions={{ headerShown: false, animation: 'slide_from_right', }} >
             <Stack.Screen name="Login" component={HomeScreen} />
-            <Stack.Screen name="PlayList" component={PlayListScreen} />
+            {/* <Stack.Screen name="PlayList" component={PlayListScreen} />
             <Stack.Screen name="Cadastro" component={CadastroScreen} />
             <Stack.Screen name="Home" component={HomeScreen} />
             <Stack.Screen name="Livros" component={LivrosScreen} />
-            <Stack.Screen name="Capitulos" component={CapitulosScreen} />
+            <Stack.Screen name="Capitulos" component={CapitulosScreen} /> */}
         </Stack.Navigator>
     );
 }
