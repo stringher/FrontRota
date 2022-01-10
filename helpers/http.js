@@ -1,7 +1,7 @@
 import axios from "axios";
-import mime from 'mime-types';
+// import mime from 'mime-types';
 import AsyncStorage from '@react-native-async-storage/async-storage';
-import https from "https";
+// import https from "https";
 
 const defaultHeader = {
     "Content-type": "application/json",
@@ -23,7 +23,7 @@ const readData = async (key) => {
 }
 
 const instance = axios.create({
-    httpsAgent: new https.Agent({ rejectUnauthorized: false }),
+    // httpsAgent: new https.Agent({ rejectUnauthorized: false }),
     baseURL: 'https://a2jkzcmh3p.us-east-2.awsapprunner.com',
     timeout: 10000,
     headers: defaultHeader
@@ -98,17 +98,17 @@ export async function patch(url, data = undefined, config = {}) {
         .catch(error => { return { success: false, status: error.response && error.response.status ? error.response.status : 500, message: error.message ? error.message : 'Api Arror', data: error.response && error.response.data ? error.response.data : {} } });
 }
 
-export async function download(url, config = {}) {
-    let mimetype = mime.lookup(url.substring(url.length - 6));
-    if (!mimetype) mimetype = 'application/octet-stream';
-    config = { headers: { ...defaultHeader, 'Content-Type': mimetype }, ...config, responseType: 'blob' };
-    return instance.get(url, config)
-}
+// export async function download(url, config = {}) {
+//     let mimetype = mime.lookup(url.substring(url.length - 6));
+//     if (!mimetype) mimetype = 'application/octet-stream';
+//     config = { headers: { ...defaultHeader, 'Content-Type': mimetype }, ...config, responseType: 'blob' };
+//     return instance.get(url, config)
+// }
 
-export async function upload(url, data, config = {}) {
-    config = { headers: { ...defaultHeader, 'Content-Type': 'multipart/form-data' }, ...config, }
-    return instance.post(url, data, config)
-        .then(res => { return { success: true, status: res.status, message: res.statusText, data: res.data } })
-        .catch(error => { return { success: false, status: error.response && error.response.status ? error.response.status : 500, message: error.message ? error.message : 'Api Arror', data: error.response && error.response.data ? error.response.data : {} } });
-}
+// export async function upload(url, data, config = {}) {
+//     config = { headers: { ...defaultHeader, 'Content-Type': 'multipart/form-data' }, ...config, }
+//     return instance.post(url, data, config)
+//         .then(res => { return { success: true, status: res.status, message: res.statusText, data: res.data } })
+//         .catch(error => { return { success: false, status: error.response && error.response.status ? error.response.status : 500, message: error.message ? error.message : 'Api Arror', data: error.response && error.response.data ? error.response.data : {} } });
+// }
 

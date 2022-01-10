@@ -7,7 +7,7 @@ import { useFonts, Roboto_400Regular, } from '@expo-google-fonts/roboto';
 
 import { InputTextBox, InputDateBox } from '../../components/InputBox'
 import TitlePageTemplate from "../../components/TitlePageTemplate";
-import { format } from "date-fns";
+// import { format } from "date-fns";
 
 const width = Dimensions.get('window').width;
 
@@ -55,12 +55,12 @@ const StyledImage = styled.Image`
 
 
 
-function parseDateString(value, originalValue) {
-    console.log('parseDateString', originalValue, new Date(originalValue));
-    const parsedDate = format(originalValue, 'yyyy/MM/dd');
-    console.log('parseDateStringreturn', parsedDate);
-    return parsedDate;
-}
+// function parseDateString(value, originalValue) {
+//     console.log('parseDateString', originalValue, new Date(originalValue));
+//     const parsedDate = format(originalValue, 'yyyy/MM/dd');
+//     console.log('parseDateStringreturn', parsedDate);
+//     return parsedDate;
+// }
 
 
 const validationSchema = Yup.object().shape({
