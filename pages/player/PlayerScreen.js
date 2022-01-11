@@ -11,10 +11,10 @@ const width = Dimensions.get('window').width;
 const height = Dimensions.get('window').height;
 
 const Container = styled.View`
+    top: -30px;
     background-color: #132440;
     align-items: center;
     justify-content: center;
-    top: -30px;
     width: ${width - 50}px;
     height: ${height - 130}px;
 `;
@@ -22,7 +22,7 @@ const Container = styled.View`
 
 const AudioContainer = styled.View`
     /* margin-top: ${height - 250}px; */
-    top: -10;
+    top: -10px;
     background-color: #132440;
     height: 110px;
     /* border-width: 1px;
@@ -30,7 +30,7 @@ const AudioContainer = styled.View`
 `;
 
 const Label = styled.Text`
-    top: -20;
+    top: -20px;
     font-size: 18px;
     font-family: RobotoCondensed_300Light;
     color: #F6F6F6;
@@ -39,7 +39,7 @@ const Label = styled.Text`
 `
 
 const ImageContainer = styled.View`
-    top: -40;
+    top: -40px;
     align-items: center;
     justify-content: center;
     width: ${width - 80}px;
