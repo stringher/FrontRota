@@ -1,5 +1,6 @@
 import React from "react";
 import styled from "styled-components/native";
+import Constants from 'expo-constants';
 import AppLoading from 'expo-app-loading';
 import { useFonts, RobotoCondensed_300Light } from '@expo-google-fonts/roboto-condensed';
 import Footer from './footer/Footer'
@@ -7,7 +8,7 @@ import Footer from './footer/Footer'
 
 const Container = styled.View`
   flex: 1;  
-  padding-top: 35px;
+  padding-top:  ${Constants.statusBarHeight + 3}px;
   flex-direction: column;
   align-items: center;
   justify-content: flex-start;

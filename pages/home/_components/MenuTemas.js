@@ -1,7 +1,8 @@
 import React from "react";
-import { Dimensions } from "react-native";
 import styled from "styled-components/native";
 import AppLoading from 'expo-app-loading';
+import { getTemas } from '../../../services/ApiServices'
+import { Dimensions } from "react-native";
 import { useFonts, Roboto_400Regular, } from '@expo-google-fonts/roboto';
 
 const width = Dimensions.get('window').width;
@@ -82,8 +83,7 @@ const MenuTemas = (props) => {
     }, [props.filter])
 
     const getList = () => {
-        fetch('https://a2jkzcmh3p.us-east-2.awsapprunner.com/temas')
-            .then(response => response.json())
+        getTemas()
             .then(response => {
                 setList(() => [...response])
                 setOriginalList(() => [...response])
