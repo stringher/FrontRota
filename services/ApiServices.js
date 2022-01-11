@@ -13,3 +13,10 @@ export const getTemas = async () => {
         return res && res.success ? res.data : undefined;
     } catch { return undefined }
 }
+
+export const getLivrosTestamento = async () => {
+    try {
+        const res = await http.get('/livros/testamento')
+        return res && res.success ? res.data : undefined;
+    } catch { return undefined}
+}

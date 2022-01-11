@@ -126,7 +126,7 @@ const LivrosScreen = (props) => {
                 <Container>
                     {
                         list?.map((item, index) =>
-                            <Buttom key={index} >
+                            <Buttom key={index} onPress={() => props.navigation.navigate('Capitulos', item)} >
                                 <StyledText>
                                     {item.nome}
                                 </StyledText>
