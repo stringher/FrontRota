@@ -16,27 +16,21 @@ const Container = styled.View`
     justify-content: center;
     top: -30px;
     width: ${width - 50}px;
-    height: ${height - 180}px;
+    height: ${height - 130}px;
 `;
 
-const ImageContainer = styled.View`
-    width: ${width - 50}px;
-    height: ${width - 50}px;
-    border-radius: 10px;
-    border-width: 1px;
-    border-color: white;
-    margin-bottom: 25px;
-`;
 
 const AudioContainer = styled.View`
     /* margin-top: ${height - 250}px; */
+    top: -10;
     background-color: #132440;
-    height: 70px;
+    height: 110px;
     /* border-width: 1px;
     border-color: white; */
 `;
 
 const Label = styled.Text`
+    top: -20;
     font-size: 18px;
     font-family: RobotoCondensed_300Light;
     color: #F6F6F6;
@@ -44,12 +38,40 @@ const Label = styled.Text`
     margin-bottom: 15px;
 `
 
-const url = 'https://traffic.omny.fm/d/clips/f895e4af-2068-409d-a7a7-aa9201219358/19cc81e9-b5ee-4bfa-b607-ab95010bd308/fe9315e4-684c-4e8a-8b57-aba30117a422/audio.mp3'
+const ImageContainer = styled.View`
+    top: -40;
+    align-items: center;
+    justify-content: center;
+    width: ${width - 80}px;
+    height: ${width - 80}px;
+    margin-bottom: 25px;
+`;
+
+const Image = styled.Image`
+    flex:1;
+    border-radius: 8px;
+`
+
+// const AudioUrl = 'https://traffic.omny.fm/d/clips/f895e4af-2068-409d-a7a7-aa9201219358/19cc81e9-b5ee-4bfa-b607-ab95010bd308/fe9315e4-684c-4e8a-8b57-aba30117a422/audio.mp3'
+// const ImageUrl = 'https://www.omnycontent.com/d/clips/f895e4af-2068-409d-a7a7-aa9201219358/19cc81e9-b5ee-4bfa-b607-ab95010bd308/fe9315e4-684c-4e8a-8b57-aba30117a422/image.jpg?size=Medium'
+
+
+const api = 'https://omny.fm/api/orgs/f895e4af-2068-409d-a7a7-aa9201219358/clips/'
+const clipId = 'fe9315e4-684c-4e8a-8b57-aba30117a422'
+
+
 const PlayerScreen = (props) => {
 
+    const [data, setData] = React.useState()
     const [fontsLoaded] = useFonts({ RobotoCondensed_300Light, });
 
-    const data = props?.route?.params;
+    React.useEffect(() => {
+        const data = props?.route?.params;
+        fetch(`${api}/${data?.clipId || clipId}`)
+            .then((response) => response.json())
+            .then((json) => setData(json));
+    }, [])
+
 
     if (!fontsLoaded) {
         return <AppLoading />;
@@ -58,12 +80,13 @@ const PlayerScreen = (props) => {
             <TitlePageTemplate {...props} nome={""} footerId={0} >
                 <Container>
                     <ImageContainer>
+                        {data?.ImageUrl && <Image source={{ uri: data?.ImageUrl }} style={{ width: 305, height: 159 }} />}
                     </ImageContainer>
                     <Label>
-                        {props.label}
+                        {data?.Title}
                     </Label>
                     <AudioContainer>
-                        <AudioPlayer url={data?.url || url} />
+                        {data?.AudioUrl && <AudioPlayer url={data?.AudioUrl} />}
                     </AudioContainer>
                 </Container>
             </TitlePageTemplate>
