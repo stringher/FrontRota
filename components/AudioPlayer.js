@@ -26,11 +26,19 @@ const Button = styled.TouchableHighlight`
     border-radius: 8px;
 `
 const TimeLabel = styled.Text`
+    padding-top: 25px;
     color: #BBBBBB;
     font-size: 12px;
     font-family: RobotoCondensed_300Light;
 `
-
+const LoadingContainer = styled.View`
+    flex: 1; 
+    top: 10px; 
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    align-content: flex-start;
+`;
 // const Progress = (data) => {
 
 //     return (
@@ -61,7 +69,10 @@ const msToTime = (duration) => {
     //     ((minutes === "00" && hours === "00") ? "" : minutes + ":") +
     //     ((seconds === '00' && minutes === "00" && hours === "00") ? "" : seconds)
     // )
-    return hours + ":" + minutes + ":" + seconds;
+    return (
+        ((hours === "00") ? "" : hours + ":h") + minutes + ":" + seconds
+    )
+    // return hours + ":" + minutes + ":" + seconds;
 }
 
 const AudioPlayer = (props) => {
@@ -141,11 +152,10 @@ const AudioPlayer = (props) => {
     } else {
         return (
             <Container>
-                {(!(status === 'Playing' || status === 'Paused' || status === 'Stopped') || loading) && <ActivityIndicator />}
                 {/* <Progress data={0.50} /> */}
                 <ButtonContainer>
                     {position > 0 && <TimeLabel>{msToTime(position || 0)}</TimeLabel>}
-                    {duration > 0 && <TimeLabel>{msToTime(duration - position || 0)}</TimeLabel>}
+                    {duration > 0 && <TimeLabel>-{msToTime(duration - position || 0)}</TimeLabel>}
                 </ButtonContainer>
                 <ButtonContainer>
                     <Button
@@ -174,7 +184,16 @@ const AudioPlayer = (props) => {
                     >
                         <MaterialIcons name="forward-30" size={30} color={(status === 'Playing' || status === 'Paused') ? 'white' : 'gray'} />
                     </Button>
+
                 </ButtonContainer>
+                <LoadingContainer>
+                    {(!(status === 'Playing' || status === 'Paused' || status === 'Stopped') || loading) &&
+                        <>
+                            <ActivityIndicator />
+                            <TimeLabel>Carregando ...</TimeLabel>
+                        </>
+                    }
+                </LoadingContainer>
             </Container>
         )
     }
