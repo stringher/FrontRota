@@ -1,77 +1,13 @@
 import React from "react";
 import styled from "styled-components/native";
 import { Dimensions } from "react-native";
+import AppLoading from 'expo-app-loading';
+import { getLivrosTestamento } from '../../services/ApiServices';
 import SearchPageTemplate from "../../components/SearchPageTemplate";
+import { useFonts, Roboto_400Regular, } from '@expo-google-fonts/roboto';
 
 const width = Dimensions.get('window').width;
 const height = Dimensions.get('window').height;
-
-const listNovoTestamento = [
-    { id_livro: 1, nome: 'Mateus' },
-    { id_livro: 2, nome: 'Marcos' },
-    { id_livro: 3, nome: 'Lucas' },
-    { id_livro: 4, nome: 'João' },
-    { id_livro: 5, nome: 'Atos dos Apóstolos' },
-    { id_livro: 6, nome: 'Romanos' },
-    { id_livro: 7, nome: '1 Coríntios' },
-    { id_livro: 8, nome: '2 Coríntios' },
-    { id_livro: 9, nome: 'Gálatas' },
-    { id_livro: 10, nome: 'Efésios' },
-    { id_livro: 11, nome: 'Filipenses' },
-    { id_livro: 12, nome: 'Colossenses' },
-    { id_livro: 13, nome: '1 Tessalonicenses' },
-    { id_livro: 14, nome: '2 Tessalonicenses' },
-    { id_livro: 15, nome: '1 Timóteo' },
-    { id_livro: 16, nome: '2 Timóteo' },
-    { id_livro: 17, nome: 'Tito' },
-    { id_livro: 18, nome: 'Filemon' },
-    { id_livro: 19, nome: 'Hebreus' },
-    { id_livro: 20, nome: 'Tiago' },
-    { id_livro: 21, nome: '1 Pedro' },
-    { id_livro: 22, nome: '2 Pedro' },
-    { id_livro: 23, nome: '1 João' },
-    { id_livro: 24, nome: '2 João' },
-    { id_livro: 25, nome: '3 João' },
-    { id_livro: 26, nome: 'Judas' },
-    { id_livro: 27, nome: 'Apocalipse' },
-]
-
-const listVelhoTestamento = [
-    { id_livro: 1, nome: 'Genesis' },
-    { id_livro: 2, nome: 'Êxodo' },
-    { id_livro: 3, nome: 'Levítico' },
-    { id_livro: 4, nome: 'Josué' },
-    { id_livro: 5, nome: 'Juízes' },
-    { id_livro: 6, nome: 'Rute' },
-    { id_livro: 7, nome: 'Samuel I' },
-    { id_livro: 8, nome: 'Samuel II' },
-    { id_livro: 9, nome: 'Rei I' },
-    { id_livro: 10, nome: 'Reis II' },
-    { id_livro: 11, nome: 'Crônicas I' },
-    { id_livro: 12, nome: 'Crônicas II' },
-    { id_livro: 13, nome: 'Esdras' },
-    { id_livro: 14, nome: 'Neemias' },
-    { id_livro: 15, nome: 'Ester' },
-    { id_livro: 16, nome: 'Jó' },
-    { id_livro: 17, nome: 'Salmo' },
-    { id_livro: 18, nome: 'Provérbios' },
-    { id_livro: 19, nome: 'Eclesiastes' },
-    { id_livro: 20, nome: 'Cantares' },
-    { id_livro: 21, nome: 'Isaias' },
-    { id_livro: 22, nome: 'Jeremias' },
-    { id_livro: 23, nome: 'Ezequiel' },
-    { id_livro: 24, nome: 'Lamentações' },
-    { id_livro: 25, nome: 'Daniel' },
-    { id_livro: 26, nome: 'Oséias' },
-    { id_livro: 27, nome: 'Joel' },
-    { id_livro: 28, nome: 'Amós' },
-    { id_livro: 29, nome: 'Jonas' },
-    { id_livro: 30, nome: 'Obadias' },
-    { id_livro: 31, nome: 'Miquéias' },
-    { id_livro: 32, nome: 'Habacuque' },
-    { id_livro: 33, nome: 'Ageu' },
-    { id_livro: 34, nome: 'Zacarias' },
-]
 
 const Scroll = styled.ScrollView`
     top: 40px;
@@ -111,31 +47,57 @@ const LivrosScreen = (props) => {
 
     const data = props?.route?.params;
 
-    const [list, setList] = React.useState(data?.id === 1 ? listVelhoTestamento : listNovoTestamento);
-    const [filter, setFilter] = React.useState('');
+    const [fontsLoaded] = useFonts({ Roboto_400Regular, })
+
+    const [list, setList] = React.useState([]);
+    const [originalList, setOriginalList] = React.useState([]);
 
     React.useEffect(() => {
-        const result = (data?.id === 1 ? listVelhoTestamento : listNovoTestamento)
-            .filter(item => item.nome.toLowerCase().indexOf(filter.toLowerCase()) !== -1)
-        setList(() => [...result])
-    }, [filter])
+        getListaLivros()
+    }, [])
 
-    return (
-        <SearchPageTemplate  {...props} onSearch={(data) => setFilter(data)}>
-            <Scroll showsVerticalScrollIndicator={false}>
-                <Container>
-                    {
-                        list?.map((item, index) =>
-                            <Buttom key={index} >
-                                <StyledText>
-                                    {item.nome}
-                                </StyledText>
-                            </Buttom>)
-                    }
-                </Container>
-            </Scroll>
-        </SearchPageTemplate>
-    )
+    React.useEffect(() => {
+        if (props.filter && props.filter.trim() !== '') {
+            const result = originalList.filter(item => item.nome.toLowerCase().indexOf(props.filter.toLowerCase()) !== -1)
+            setList(() => [...result])
+        } else {
+            setList(() => [...originalList])
+        }
+    }, [props.filter])
+
+    const getListaLivros = () => {
+        getLivrosTestamento(data?.cod_testamento)
+            .then(response => {
+                setList(() => [...response])
+                setOriginalList(() => [...response])
+            })
+    };
+
+    const handleOnPress = (data) => {
+        props.navigation.navigate('Capitulos', data)
+    }
+
+    if (!fontsLoaded) {
+        return <AppLoading />;
+    } else {
+        return (
+            <SearchPageTemplate  {...props} onSearch={(data) => setFilter(data)}>
+                <Scroll showsVerticalScrollIndicator={false}>
+                    <Container>
+                        {
+                            list?.map((item, index) =>
+                                <Buttom key={index} onPress={() => handleOnPress(item)} >
+                                    <StyledText>
+                                        {item.nome_livro}
+                                    </StyledText>
+                                </Buttom>
+                            )
+                        }
+                    </Container>
+                </Scroll>
+            </SearchPageTemplate>
+        )
+    }
 
 }
 

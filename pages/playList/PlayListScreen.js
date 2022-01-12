@@ -9,7 +9,7 @@ const PlayListScreen = (props) => {
 
   return (
     <TitlePageTemplate {...props} nome={data?.nome || "PlayList"} footerId={2} >
-      <Text style={{ color: 'white' }}>Olá mundo</Text>
+      <Text style={{ color: 'white' }}>Em Breve...</Text>
     </TitlePageTemplate>
   )
 

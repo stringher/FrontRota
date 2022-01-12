@@ -13,3 +13,24 @@ export const getTemas = async () => {
         return res && res.success ? res.data : undefined;
     } catch { return undefined }
 }
+
+export const getLivrosTestamento = async (cod_testamento) => {
+    try {
+        const res = await http.get(`/livros/testamento/${cod_testamento}`)
+        return res && res.success ? res.data : undefined;
+    } catch(e) {console.log(e); return undefined}
+}
+
+export const getCapitulosByLivros = async (id_livro) => {
+    try {
+        const res = await http.post(`/livros/capitulos`, { id_livro })
+        return res && res.success ? res.data : undefined;
+    } catch(e) {console.log(e); return undefined}
+}
+
+export const getMidiaCapitulo = async (id_cap) => {
+    try {
+        const res = await http.get(`/midia/midia_capitulo/${id_cap}`)
+        return res && res.success ? res.data : undefined
+    } catch(e) { console.log(e); return undefined}
+}
