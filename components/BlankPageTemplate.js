@@ -1,8 +1,8 @@
 import React from "react";
 import styled from "styled-components/native";
 import Constants from 'expo-constants';
-import AppLoading from 'expo-app-loading';
-import { useFonts, RobotoCondensed_300Light } from '@expo-google-fonts/roboto-condensed';
+// import AppLoading from 'expo-app-loading';
+// import { useFonts, RobotoCondensed_300Light } from '@expo-google-fonts/roboto-condensed';
 import Footer from './footer/Footer'
 
 
@@ -21,20 +21,20 @@ const AreaContainer = styled.View`
 
 const BlankPageTemplate = (props) => {
 
-  const [fontsLoaded] = useFonts({ RobotoCondensed_300Light, });
+  // const [fontsLoaded] = useFonts({ RobotoCondensed_300Light, });
 
-  if (!fontsLoaded) {
-    return <AppLoading />;
-  } else {
-    return (
-      <Container>
-        <AreaContainer>
-          {props.children}
-        </AreaContainer>
-        <Footer {...props} id={props?.footerId} />
-      </Container>
-    )
-  }
+  // if (!fontsLoaded) {
+  //   return <AppLoading />;
+  // } else {
+  return (
+    <Container>
+      <AreaContainer>
+        {props.children}
+      </AreaContainer>
+      <Footer {...props} id={props?.footerId} />
+    </Container>
+  )
+  // }
 }
 
 export default BlankPageTemplate;
