@@ -22,9 +22,9 @@ const Container = styled.View`
 
 const AudioContainer = styled.View`
     /* margin-top: ${height - 250}px; */
-    top: -10px;
+    top: -20px;
     background-color: #132440;
-    height: 110px;
+    height: 150px;
     /* border-width: 1px;
     border-color: white; */
 `;
