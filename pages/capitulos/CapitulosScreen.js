@@ -2,6 +2,9 @@ import React from "react";
 import { Dimensions } from "react-native";
 import styled from "styled-components/native";
 import TitlePageTemplate from "../../components/TitlePageTemplate";
+import AppLoading from 'expo-app-loading';
+import { getCapitulosByLivros } from '../../services/ApiServices';
+import { useFonts, Roboto_400Regular, } from '@expo-google-fonts/roboto';
 
 const width = Dimensions.get('window').width;
 const height = Dimensions.get('window').height;
@@ -41,18 +44,71 @@ const StyledText = styled.Text`
 `
 
 const CapitulosScreen = (props) => {
+    const data = props?.route?.params;
 
-    return (
-        <TitlePageTemplate {...props} nome="Capitulos" footerId={2} >
-            <Scroll showsVerticalScrollIndicator={false}>
-                <Container>
-                    <Button >
-                        <StyledText >{'1'}</StyledText>
-                    </Button>
-                </Container>
-            </Scroll>
-        </TitlePageTemplate>
-    )
+    const [fontsLoaded] = useFonts({ Roboto_400Regular, })
+
+    const [list, setList] = React.useState([]);
+    const [originalList, setOriginalList] = React.useState([]);
+
+    React.useEffect(() => {
+        getListaCapitulos()
+    }, [])
+
+    React.useEffect(() => {
+        if (props.filter && props.filter.trim() !== '') {
+            const result = originalList.filter(item => item.nome.toLowerCase().indexOf(props.filter.toLowerCase()) !== -1)
+            setList(() => [...result])
+        } else {
+            setList(() => [...originalList])
+        }
+    }, [props.filter])
+
+    const getListaCapitulos = () => {
+        getCapitulosByLivros(data?.id_livro)
+            .then(response => {
+                setList(() => [...response])
+                setOriginalList(() => [...response])
+            })
+    };
+
+    const handleOnPress = (data) => {
+        props.navigation.navigate('Capitulos', data)
+    }
+
+    if (!fontsLoaded) {
+        return <AppLoading />;
+    } else {
+        return (
+            <TitlePageTemplate {...props} nome={data?.nome_livro ||"Capitulos"} footerId={2} >
+                <Scroll showsVerticalScrollIndicator={false}>
+                    <Container>
+                        {
+                            list?.map((item, index) =>
+                                <Button>
+                                    <StyledText>
+                                        {item.num_cap}
+                                    </StyledText>
+                                </Button>
+                            )
+                        }
+                    </Container>
+                </Scroll>
+            </TitlePageTemplate>
+        )
+    }
+
+    // return (
+    //     <TitlePageTemplate {...props} nome="Capitulos" footerId={2} >
+    //         <Scroll showsVerticalScrollIndicator={false}>
+    //             <Container>
+    //                 <Button >
+    //                     <StyledText >{'1'}</StyledText>
+    //                 </Button>
+    //             </Container>
+    //         </Scroll>
+    //     </TitlePageTemplate>
+    // )
 
 }
 

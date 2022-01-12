@@ -8,8 +8,8 @@ const width = Dimensions.get('window').width;
 const height = Dimensions.get('window').height;
 
 const lista = [
-    { id: 1, nome: "Velho Testamento" },
-    { id: 2, nome: "Novo Testamento" },
+    { cod_testamento: 1, nome: "Velho Testamento" },
+    { cod_testamento: 2, nome: "Novo Testamento" },
 ]
 
 const Container = styled.View`
