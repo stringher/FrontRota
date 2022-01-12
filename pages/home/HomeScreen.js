@@ -10,7 +10,7 @@ const HomeScreen = (props) => {
   return (
     <SearchPageTemplate  {...props} onSearch={(data) => setFilter(data)}>
       <MenuLivros {...props} filter={filter} />
-      <MenuTemas {...props} filter={filter} />
+      {/* <MenuTemas {...props} filter={filter} /> */}
     </SearchPageTemplate>
   )
 }

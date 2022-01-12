@@ -27,3 +27,10 @@ export const getCapitulosByLivros = async (id_livro) => {
         return res && res.success ? res.data : undefined;
     } catch(e) {console.log(e); return undefined}
 }
+
+export const getMidiaCapitulo = async (id_cap) => {
+    try {
+        const res = await http.get(`/midia/midia_capitulo/${id_cap}`)
+        return res && res.success ? res.data : undefined
+    } catch(e) { console.log(e); return undefined}
+}

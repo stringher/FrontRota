@@ -90,7 +90,8 @@ const LivrosScreen = (props) => {
                                     <StyledText>
                                         {item.nome_livro}
                                     </StyledText>
-                                </Buttom>)
+                                </Buttom>
+                            )
                         }
                     </Container>
                 </Scroll>

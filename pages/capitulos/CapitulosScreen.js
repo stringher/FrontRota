@@ -73,7 +73,7 @@ const CapitulosScreen = (props) => {
     };
 
     const handleOnPress = (data) => {
-        props.navigation.navigate('Capitulos', data)
+        props.navigation.navigate('MidiaCapitulo', data)
     }
 
     if (!fontsLoaded) {
@@ -85,7 +85,7 @@ const CapitulosScreen = (props) => {
                     <Container>
                         {
                             list?.map((item, index) =>
-                                <Button>
+                                <Button key={index} onPress={() => handleOnPress(item)}>
                                     <StyledText>
                                         {item.num_cap}
                                     </StyledText>
@@ -98,17 +98,6 @@ const CapitulosScreen = (props) => {
         )
     }
 
-    // return (
-    //     <TitlePageTemplate {...props} nome="Capitulos" footerId={2} >
-    //         <Scroll showsVerticalScrollIndicator={false}>
-    //             <Container>
-    //                 <Button >
-    //                     <StyledText >{'1'}</StyledText>
-    //                 </Button>
-    //             </Container>
-    //         </Scroll>
-    //     </TitlePageTemplate>
-    // )
 
 }
 
