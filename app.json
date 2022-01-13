@@ -1,8 +1,8 @@
 {
   "expo": {
-    "name": "teste-vania",
-    "slug": "teste-vania",
-    "version": "1.0.0",
+    "name": "TPlayer",
+    "slug": "TPlayer",
+    "version": "0.1.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
     "splash": {
@@ -20,6 +20,8 @@
       "supportsTablet": true
     },
     "android": {
+      "package": "br.com.taken.tplayer",
+      "versionCode": 1,
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#FFFFFF"
