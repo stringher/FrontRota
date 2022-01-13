@@ -8,7 +8,7 @@ const width = Dimensions.get('window').width;
 // const height = Dimensions.get('window').height;
 
 const lista = [
-    { cod_testamento: 1, nome: "Velho Testamento" },
+    { cod_testamento: 1, nome: "Antigo Testamento" },
     { cod_testamento: 2, nome: "Novo Testamento" },
 ]
 
