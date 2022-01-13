@@ -100,7 +100,7 @@ const CadastroScreen = (props) => {
         try {
             validationSchema.validate(data, { abortEarly: false })
                 .then((valid) => {
-                    console.log('valid', valid);
+                    // console.log('valid', valid);
                 })
                 .catch(function (err) {
                     setErrors(() => [...err.errors])

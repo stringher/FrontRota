@@ -1,7 +1,7 @@
 import React from "react";
 import SearchPageTemplate from "../../components/SearchPageTemplate";
 import MenuLivros from './_components/MenuLivros'
-import MenuTemas from './_components/MenuTemas'
+// import MenuTemas from './_components/MenuTemas'
 
 const HomeScreen = (props) => {
 

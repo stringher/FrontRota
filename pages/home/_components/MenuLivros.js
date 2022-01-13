@@ -5,7 +5,7 @@ import AppLoading from 'expo-app-loading';
 import { useFonts, Roboto_400Regular, } from '@expo-google-fonts/roboto';
 
 const width = Dimensions.get('window').width;
-const height = Dimensions.get('window').height;
+// const height = Dimensions.get('window').height;
 
 const lista = [
     { cod_testamento: 1, nome: "Velho Testamento" },
@@ -45,13 +45,25 @@ const MenuLivros = (props) => {
 
     const [fontsLoaded] = useFonts({ Roboto_400Regular, })
 
+    const [list, setList] = React.useState(lista);
+    const [originalList, setOriginalList] = React.useState(lista);
+
+    React.useEffect(() => {
+        if (props.filter && props.filter.trim() !== '') {
+            const result = originalList.filter(item => item.nome.toLowerCase().indexOf(props.filter.toLowerCase()) !== -1)
+            setList(() => [...result])
+        } else {
+            setList(() => [...originalList])
+        }
+    }, [props.filter])
+
 
     if (!fontsLoaded) {
         return <AppLoading />;
     } else {
         return (
             <Container>
-                {lista.map((item, index) =>
+                {list.map((item, index) =>
                     <Button key={index} onPress={() => props.navigation.navigate('Livros', item)} >
                         <StyledText >{item.nome}</StyledText>
                     </Button>

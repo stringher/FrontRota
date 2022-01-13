@@ -49,6 +49,7 @@ const LivrosScreen = (props) => {
 
     const [fontsLoaded] = useFonts({ Roboto_400Regular, })
 
+    const [filter, setFilter] = React.useState('');
     const [list, setList] = React.useState([]);
     const [originalList, setOriginalList] = React.useState([]);
 
@@ -57,13 +58,13 @@ const LivrosScreen = (props) => {
     }, [])
 
     React.useEffect(() => {
-        if (props.filter && props.filter.trim() !== '') {
-            const result = originalList.filter(item => item.nome.toLowerCase().indexOf(props.filter.toLowerCase()) !== -1)
+        if (filter && filter.trim() !== '') {
+            const result = originalList.filter(item => item.nome_livro.toLowerCase().indexOf(filter.toLowerCase()) !== -1)
             setList(() => [...result])
         } else {
             setList(() => [...originalList])
         }
-    }, [props.filter])
+    }, [filter])
 
     const getListaLivros = () => {
         getLivrosTestamento(data?.cod_testamento)
