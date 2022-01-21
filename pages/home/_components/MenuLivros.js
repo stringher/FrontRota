@@ -13,6 +13,14 @@ const lista = [
 ]
 
 const Container = styled.View`
+    flex: 1;
+    flex-direction: column;
+    width: ${width - 50}px;
+    padding: 0px;
+    margin: 0px;
+`;
+
+const ContainerButton = styled.View`
     top: 25px;
     flex-direction: row;
     justify-content: space-between;
@@ -20,26 +28,33 @@ const Container = styled.View`
 `;
 
 const Button = styled.TouchableOpacity`
+    /* display: 'inline-flex'; */
     height: ${parseInt(width / 2) - 40}px;
     width: ${parseInt(width / 2) - 40}px;    
     border-radius: 8px;
     padding: 20px;
     align-items: center;
     justify-content: flex-start;
-    margin-top: 10px;
-    margin-bottom: 10px;
     background-color: rgba(49, 64, 88, 0.6);
 `;
 
 const StyledText = styled.Text`
-    margin-top: 10px;
     font-family: 'Roboto_400Regular';
-    font-size: 18px;
+    font-size: 20px;
     color: #FBB03F;
     text-align: center;
 `
 
+const ImageContainer = styled.View`
+    align-items: center;
+    justify-content: center;
+    width: 180;
+    height: 180;
+`;
 
+const Image = styled.Image`
+    flex:1;
+`
 
 const MenuLivros = (props) => {
 
@@ -63,11 +78,17 @@ const MenuLivros = (props) => {
     } else {
         return (
             <Container>
-                {list.map((item, index) =>
-                    <Button key={index} onPress={() => props.navigation.navigate('Livros', item)} >
-                        <StyledText >{item.nome}</StyledText>
-                    </Button>
-                )}
+                <ContainerButton>
+                    {list.map((item, index) =>
+                        <Button key={index} onPress={() => props.navigation.navigate('Livros', item)} >
+                            <Image source={require('../../../assets/old-bible.jpg')} style={{ width: '100%', heigth: '100%', borderRadius: 4 }} />
+                            <StyledText >{item.nome}</StyledText>
+                        </Button>
+                    )}
+                </ContainerButton>
+                <ImageContainer>
+                    <Image source={require('../../../assets/logo1.png')} style={{ top: 150, left: 80, width: 150, heigth: 150 }} />
+                </ImageContainer>
             </Container>
         )
     }
