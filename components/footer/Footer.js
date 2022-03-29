@@ -73,9 +73,9 @@ const Footer = (props) => {
                 case 1:
                     props.navigation.navigate('Home')
                     break;
-                case 2:
-                    props.navigation.navigate('PlayList')
-                    break;
+                // case 2:
+                //     props.navigation.navigate('PlayList')
+                //     break;
             }
         }
 
