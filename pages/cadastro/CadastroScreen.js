@@ -118,7 +118,7 @@ const CadastroScreen = (props) => {
     } else {
         return (
             <TitlePageTemplate {...props} nome="" footerId={0} >
-                <StyledImage source={require('../../assets/logo1.png')} />
+                <StyledImage source={require('../../assets/logo_rota66-100.png')} />
                 <Container>
                     <InputTextBox name="nome" onChange={handleSetData} placeholder="Nome" errors={errors} />
                     <InputTextBox name="email" onChange={handleSetData} placeholder="Email" errors={errors} />
